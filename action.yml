@@ -1,9 +1,13 @@
 name: Access private repositories
+inputs:
+  access_token:
+    description: "The GitHub access token"
+    required: true
 runs:
   using: composite
   steps:
     - name: Inject access token
       env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        ACCESS_TOKEN: ${{ inputs.access_token }}
       run: |
         git config --global url.https://$ACCESS_TOKEN@github.com/.insteadOf git@github.com:
