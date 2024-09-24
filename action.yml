@@ -1,7 +1,9 @@
-name: Sample action
+name: Access private repositories
 runs:
   using: composite
   steps:
-    - name: Sample step
+    - name: Inject access token
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
-        echo "Hello"
+        git config --global url.https://$ACCESS_TOKEN@github.com/.insteadOf git@github.com:
