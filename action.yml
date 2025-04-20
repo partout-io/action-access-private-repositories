@@ -6,9 +6,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Inject access token
+    - name: Inject HTTPS token
       shell: bash
-      env:
-        ACCESS_TOKEN: ${{ inputs.access_token }}
       run: |
-        git config --global url.https://$ACCESS_TOKEN@github.com/.insteadOf git@github.com:
+        git config --global url."https://${{ inputs.access_token }}@github.com/".insteadOf "https://github.com/"
