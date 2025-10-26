@@ -1,6 +1,6 @@
 name: Access private repositories
 inputs:
-  access_token:
+  access-token:
     description: "The GitHub access token"
     required: true
 runs:
@@ -9,4 +9,4 @@ runs:
     - name: Inject HTTPS token
       shell: bash
       run: |
-        git config --global url."https://${{ inputs.access_token }}@github.com/".insteadOf "git@github.com:"
+        git config --global url."https://${{ inputs.access-token }}@github.com/".insteadOf "git@github.com:"
